@@ -14,8 +14,8 @@ function Card({ data }) {
 
                 <div className="md:p-4 p-2">
                     <p className="text-gray-500 md:text-sm text-xs">{data.date}</p>
-                    <h2 className="md:text-xl text-base font-semibold md:mt-2">{data.title}</h2>
-                    <p className="md:mt-2 text-sm">{data.desc}</p>
+                    <h2 className="md:text-xl text-base font-semibold md:mt-2">{data.title.split(/\s+/).slice(0, 10).join(" ")}</h2>
+                    <p className="md:mt-2 text-sm">{data.desc.split(/\s+/).slice(0, 24).join(" ") + " ..."}</p>
                 </div>
             </div>
 
