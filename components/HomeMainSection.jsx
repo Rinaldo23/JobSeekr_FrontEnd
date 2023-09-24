@@ -21,7 +21,7 @@ function HomeMainSection() {
     <div className='col-span-2 md:h-46 w-full h-auto'>
 
       {/* 1.Banner */}
-      <BannerSection image={bannerJob?.image} date={bannerJob?.date} title={bannerJob?.title} desc={bannerJob?.desc} _id={bannerJob?._id} />
+      <BannerSection data={bannerJob} />
 
       {/* 2.CardList */}
       <CardListItem cardData={jobs} />

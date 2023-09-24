@@ -7,7 +7,7 @@ function SiteDescSetion() {
     return (
         <div>
             <div className='flex flex-col items-center md:mb-8'>
-                <Image className='object-fit md:rounded-xl md:w-150 md:h-150  rounded-full mt-2' src={SiteImg} width={150} height={150} alt='aa' />
+                <Image className='object-fit md:rounded-xl md:w-150 md:h-150  rounded-full mt-2' src={SiteImg} width={150} height={150} alt='image' />
                 <h2 className='mt-2 md:text-xl text-base'>JobSeekr</h2>
                 <hr className='h-px bg-gray-200 border-0' />
                 <p className='md:mt-2 mt-1 md:text-lg text-sm'>Placement | Internship | Study Material</p>

@@ -10,7 +10,7 @@ function AboutUsSection() {
     return (
         <div>
             <div className='flex flex-col items-center mb-8'>
-                <Image className='object-fit rounded-xl' src={SiteImg} width={150} height={150} alt='aa' />
+                <Image className='object-fit rounded-xl' src={SiteImg} width={150} height={150} alt='image' />
                 <h2 className='mt-2'>JobSeekr</h2>
                 <hr className='h-px my-4 bg-gray-200 border-0' />
                 <p className='mt-2'>Placement | Internship | Study Material</p>

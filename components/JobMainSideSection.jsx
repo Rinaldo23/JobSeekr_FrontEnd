@@ -8,8 +8,8 @@ const JobMainSideSection = ({ obj }) => {
             <div className='max-w-[1240px] m-auto md:mt-8 mt-2 md:grid grid-cols-3 gap-8'>
 
                 <div className='col-span-3 md:px-6 px-2 '>
-                    {/* <img className='md:h-1/4 w-full object-cover md:rounded-xl rounded-lg' src={obj.image} alt={""} /> */}
-                    <Image className='md:h-1/4 w-full object-cover md:rounded-xl rounded-lg' src={obj.image} alt={""} width={100} height={100} />
+                    <img className='md:h-2/4 w-full object-cover md:rounded-xl rounded-lg' src={obj.image} alt={""} />
+                    {/* <Image className='md:h-1/4 w-full object-cover md:rounded-xl rounded-lg' src={obj.image} alt={""} width={100} height={100} /> */}
                     <p className='md:mt-4 mt-1 md:text-base text-xs'>{obj.date}</p>
                     {/* <h2 className='md:mt-2 mt-1 md:text-base text-lg'>{obj.title}</h2> */}
                     {/* <p className='md:mt-2 mt-1 md:text-base text-sm'>{obj.desc}</p> */}
@@ -19,7 +19,7 @@ const JobMainSideSection = ({ obj }) => {
                             <strong>Company Name: </strong> : {obj.companyname}
                         </div>
                         <div className='md:mt-2 mt-1'>
-                            <strong>Job Role: </strong> : {obj.jobrole}
+                            <strong>Job Role: </strong> : {obj.designation}
                         </div>
                         <div className='md:mt-2 mt-1'>
                             <strong>Experience: </strong> : {obj.experience}
@@ -33,18 +33,22 @@ const JobMainSideSection = ({ obj }) => {
 
                         <div className='md:mt-4 mt-2'>
                             <h2 className='md:mt-2 mt-1 md:text-base text-xl'>Job Description</h2>
-                            <p className='md:mt-4 mt-2 md:text-base text-sm'>{obj.desc}</p>
+                            <p className='md:mt-4 mt-2 md:text-base text-sm'>{obj.jobDesc}</p>
                         </div>
                         <div className='mt-4'>
-                            <h2 className='md:mt-2 mt-1 md:text-base text-xl'>Requirements</h2>
-                            <p className='md:mt-4 mt-2 md:text-base text-sm'>{obj.keyRequirements}</p>
+                            <h2 className='md:mt-2 mt-1 md:text-base text-xl'>Job Responsibilites</h2>
+                            <p className='md:mt-4 mt-2 md:text-base text-sm'>{obj.jobResponsibilities}</p>
+                        </div>
+                        <div className='mt-4'>
+                            <h2 className='md:mt-2 mt-1 md:text-base text-xl'>Eligibility</h2>
+                            <p className='md:mt-4 mt-2 md:text-base text-sm'>{obj.eligibility}</p>
                         </div>
                         <div className='mt-4'>
                             <h2 className='md:mt-2 mt-1 md:text-base text-xl'>Skills</h2>
                             {/* <p className='md:mt-4 mt-2 md:text-base text-sm'>{obj.requiredSkills}</p> */}
                             {
-                                obj.requiredSkills?.map((data, idx) => (
-                                    <li key={data?._id} className='text-sm ml-2 mt-1'>{data}</li>
+                                obj.skills?.map((data, idx) => (
+                                    <li key={idx} className='text-sm ml-2 mt-1'>{data}</li>
                                 ))
                             }
                         </div>

@@ -26,7 +26,7 @@ function RecentJobsSection() {
                         <div className='flex flex-col'>
                             <h6 className='md:text-lg text-base'>{job.title}</h6>
                             <p className='md:text-base text-xs'>{job.date}</p>
-                            <p className='md:text-sm text-xs'>{job.desc.split(/\s+/).slice(0, 10).join(" ") + " ..."}</p>
+                            <p className='md:text-sm text-xs'>{job.companyDesc?.split(/\s+/)?.slice(0, 10)?.join(" ") + " ..."}</p>
                         </div>
                     </div>
                 ))
