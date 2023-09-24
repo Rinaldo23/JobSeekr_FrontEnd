@@ -6,6 +6,7 @@ import axios from 'axios'
 function HomeMainSection() {
   const [bannerJob, setBannerJob] = useState([])
   const [jobs, setJobs] = useState([])
+  jobs.shift();
 
   useEffect(() => {
     const fetchJobs = async () => {
