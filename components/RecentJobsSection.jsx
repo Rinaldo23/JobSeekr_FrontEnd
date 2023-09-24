@@ -24,9 +24,9 @@ function RecentJobsSection() {
                         {/* <img className='md:w-24 md:h-24 w-16 h-16 object-fit md:rounded-lg mr-4 md:ml-4' src={job.image} alt={job.title} /> */}
                         <Image className='md:w-24 md:h-24 w-16 h-16 object-fit md:rounded-lg mr-4 md:ml-4' src={job.image} alt={job.title} width={100} height={100} />
                         <div className='flex flex-col'>
-                            <h6 className='md:text-lg text-base'>{job.title}</h6>
+                            <p className='md:text-lg md:font-semibold text-base'>{job.companyDesc?.split(/\s+/)?.slice(0, 7)?.join(" ") + " ..."}</p>
                             <p className='md:text-base text-xs'>{job.date}</p>
-                            <p className='md:text-sm text-xs'>{job.companyDesc?.split(/\s+/)?.slice(0, 10)?.join(" ") + " ..."}</p>
+                            {/* <p className='md:text-sm text-xs'>{job.companyDesc?.split(/\s+/)?.slice(0, 10)?.join(" ") + " ..."}</p> */}
                         </div>
                     </div>
                 ))
