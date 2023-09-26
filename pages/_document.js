@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head>
         <title>JobSeekr</title>
-        {/* <link rel="icon" type="image/jpg" href="favicon.jpg"></link> */}
+        <link rel="icon" href="jobseekr.jpg"></link>
       </Head>
       <body>
         <Main />
