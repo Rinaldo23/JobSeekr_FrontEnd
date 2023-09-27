@@ -39,9 +39,12 @@ const JobForm = () => {
   };
 
   const handleSubmit =async (e) => {
+
+    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verifyToken`,formData)
+
     try {
         e.preventDefault();
-        console.log(formData)
+        // console.log(formData)
         await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/jobs/addJob`,formData)
         console.log("submit success")
       } catch (error) {

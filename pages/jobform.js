@@ -1,12 +1,24 @@
+'use client'
 import Footers from '@/components/Footers'
 import JobForm from '@/components/JobForm'
 import Navbar from '@/components/NavBar'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function jobform() {
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        const key = localStorage.getItem('access_token');
+        setToken(key);
+    }, [])
+
+    console.log(token)
+
     return (
         <div className='h-screen box-content'>
-                <JobForm />
+            {
+                token !== null ? <JobForm /> : "Chal Nikal Bhomsadike!!!"
+            }
         </div>
     )
 }
