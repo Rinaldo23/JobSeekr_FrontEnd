@@ -1,11 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const JobForm = () => {
+const JobForm = ({ token }) => {
   const [formData, setFormData] = useState({
-    image: '', 
-    date: '', 
-    title: '', 
+    image: '',
+    date: '',
+    title: '',
     companyDesc: '',
     companyname: '',
     designation: '',
@@ -14,16 +14,20 @@ const JobForm = () => {
     batch: '',
     eligibility: '',
     applyLink: '',
-    jobDesc: [''], 
+    jobDesc: [''],
     jobResponsibilities: [''],
     skills: [''],
   });
+
+  const [admin, setAdmin] = useState(false)
+
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
     // Handle special cases for arrays and booleans
-   if (name === 'jobDesc' || name === 'jobResponsibilities' || name === 'skills') {
+    if (name === 'jobDesc' || name === 'jobResponsibilities' || name === 'skills') {
       let updatedArray = [...formData[name]];
       updatedArray = value.split(",");
       setFormData({
@@ -38,26 +42,46 @@ const JobForm = () => {
     }
   };
 
-  const handleSubmit =async (e) => {
 
-    await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/verifyToken`,formData)
 
-    try {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.post(`http://localhost:8000/api/auth/verifyToken`, { token })
+        console.log(res)
+        setAdmin(true)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    fetchData()
+  },[])
+
+  const handleSubmit = async (e) => {
+
+    if (admin === true) {
+      try {
         e.preventDefault();
         // console.log(formData)
-        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/jobs/addJob`,formData)
+        await axios.post(`http://localhost:8000/api/jobs/addJob`, formData)
         console.log("submit success")
       } catch (error) {
         console.error("Error sending message:", error);
       }
+    } else {
+      alert("You are not admin mf")
+    }
+
+
   };
 
   return (
+
     <form onSubmit={handleSubmit} className="flex flex-wrap">
       {/* Left Column */}
       <div className="w-full md:w-1/2 p-4">
         <h2 className="text-2xl font-semibold mb-4">Job Information</h2>
- 
+
         {/* Image */}
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
@@ -103,10 +127,10 @@ const JobForm = () => {
             required
           />
         </div>
-         {/* Experience */}
+        {/* Experience */}
         <div className="mb-4">
           <label htmlFor="experience" className="block text-gray-700 text-sm font-bold mb-2">
-             Experinence
+            Experinence
           </label>
           <input
             type="text"
@@ -231,7 +255,7 @@ const JobForm = () => {
         {/* Skills */}
         <div className="mb-4">
           <label htmlFor="companyname" className="block text-gray-700 text-sm font-bold mb-2">
-           Skills
+            Skills
           </label>
           <input
             type="text"
@@ -243,10 +267,10 @@ const JobForm = () => {
             required
           />
         </div>
-         {/* Eligibility */}
-         <div className="mb-4">
+        {/* Eligibility */}
+        <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
-           Eligibility
+            Eligibility
           </label>
           <input
             type="text"
@@ -260,9 +284,9 @@ const JobForm = () => {
         </div>
 
         {/* Job Responsibilities */}
-            <div className="mb-4">
+        <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
-           Job Responsibilities
+            Job Responsibilities
           </label>
           <input
             type="text"
@@ -276,15 +300,21 @@ const JobForm = () => {
         </div>
       </div>
 
-      {/* Submit Button */}
-      <div className="w-full p-4">
-        <button
-          type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-        >
-          Submit
-        </button>
-      </div>
+      {
+        admin === false ? <h1>Fuck you</h1> : <>
+          {/* Submit Button */}
+          <div className="w-full p-4">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Submit
+            </button>
+          </div>
+        </>
+      }
+
+
     </form>
   );
 };

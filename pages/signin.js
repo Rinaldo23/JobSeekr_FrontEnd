@@ -16,8 +16,10 @@ function signIn() {
             // const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/signin`, { name, password });
             const res = await axios.post(`http://localhost:8000/api/auth/signin`, { name, password });
             // console.log(res.data.token)
-            router.push('/protected');
-            document.cookie = `access_token=${res.data.token}`;
+            router.push('/jobform');
+            //  token
+            //document.cookie = `access_token=${res.data.token}`;
+            localStorage.setItem('access_token', res.data.token);
             
         } catch (error) {
             console.log(error)

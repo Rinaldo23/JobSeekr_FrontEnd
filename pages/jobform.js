@@ -9,6 +9,7 @@ function jobform() {
 
     useEffect(() => {
         const key = localStorage.getItem('access_token');
+
         setToken(key);
     }, [])
 
@@ -17,7 +18,7 @@ function jobform() {
     return (
         <div className='h-screen box-content'>
             {
-                token !== null ? <JobForm /> : "Chal Nikal Bhomsadike!!!"
+                token !== null ? <JobForm token={token}/> : "Chal Nikal Bhomsadike!!!"
             }
         </div>
     )
